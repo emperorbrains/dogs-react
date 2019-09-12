@@ -3,6 +3,7 @@ import React from 'react';
 
 import searchIcon from '../../../assets/icons/search.svg';
 import Breeds from './Breeds/BreedsContainer';
+import BreedImages from './BreedImages/BreedImagesContainer';
 
 const Home = () => (
   <div className="home">
@@ -14,6 +15,7 @@ const Home = () => (
       </div>
     </div>
     <Breeds />
+    <BreedImages />
   </div>
 );
 

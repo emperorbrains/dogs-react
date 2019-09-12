@@ -42,6 +42,7 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.GET_BREED_IMAGES_SUCCESS:
       return {
         ...state,
+        breedImages: action.payload.data.message,
         getBreedImagesRequestState: RequestStates.success,
         getBreedImagesError: null,
       };

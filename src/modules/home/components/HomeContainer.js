@@ -3,19 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Home from './Home';
-// import * as actions from '../redux/actions';
 import { displayErrors } from '../../../utils';
 import { usePrevious } from '../../../utils/hooks';
-// import RequestStates from '../../../utils/request-states';
+import RequestStates from '../../../utils/request-states';
 
 const HomeContainer = ({
-  loading, hasError, errorMessages,
+  hasError, errorMessages,
 }) => {
   const prevErrorMessages = usePrevious(errorMessages);
-
-  useEffect(() => {
-    // getAllBreeds();
-  }, []);
 
   useEffect(() => {
     if (hasError) {
@@ -24,33 +19,29 @@ const HomeContainer = ({
   }, [hasError, errorMessages]);
 
   return (
-    <Home
-      loading={loading}
-    />
+    <Home />
   );
 };
 
 HomeContainer.propTypes = {
-  loading: PropTypes.bool,
   hasError: PropTypes.bool,
   errorMessages: PropTypes.instanceOf(Array),
 };
 
 HomeContainer.defaultProps = {
-  loading: false,
   hasError: false,
   errorMessages: [],
 };
 
 const mapStateToProps = state => ({ // eslint-disable-line
-  // loading: state.home.getBreedsRequestState === RequestStates.loading,
-  // hasError: state.home.getBreedImagesRequestState === RequestStates.error,
-  // errorMessages: [
-  //   state.home.getBreeds,
-  // ],
+  hasError: (
+    state.home.getBreedsRequestState === RequestStates.error
+    || state.home.getBreedImagesRequestState === RequestStates.error
+  ),
+  errorMessages: [
+    state.home.getBreedsError,
+    state.home.getBreedImagesError,
+  ],
 });
 
-const mapDispatchToProps = dispatch => ({// eslint-disable-line
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps)(HomeContainer);

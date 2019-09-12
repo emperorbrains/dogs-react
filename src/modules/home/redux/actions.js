@@ -6,7 +6,7 @@ export const getBreeds = () => ({
   payload: api.get('/breeds/list/all'),
 });
 
-export const getBreedImages = () => ({
+export const getBreedImages = (breed) => ({
   type: actionTypes.GET_BREED_IMAGES,
-  // payload: api.get('/'),
+  payload: api.get(`/breed/${breed}/images`),
 });
