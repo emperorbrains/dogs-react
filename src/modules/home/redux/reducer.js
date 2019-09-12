@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   breeds: [],
   getBreedsRequestState: RequestStates.init,
   getBreedsError: null,
+  breedImages: [],
   getBreedImagesRequestState: RequestStates.init,
   getBreedImagesError: null,
 };
@@ -20,7 +21,9 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.GET_BREEDS_SUCCESS:
       return {
         ...state,
-        breeds: action.payload.breeds,
+        breeds: action.payload && action.payload.data
+          && action.payload.data.message
+          && Object.keys(action.payload.data.message),
         getBreedsRequestState: RequestStates.success,
         getBreedsError: null,
       };

@@ -1,0 +1,33 @@
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      color: #6b69ff;
+      font-family:  'Roboto', helvetica, arial, sans-serif;
+      font-size: 5rem;
+      font-weight: 300;
+    }
+    .search {
+      position: relative;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        height: 20px;
+      }
+      input {
+        border: none;
+        box-shadow: 1px 1px 4px 0 #c5c5c5;
+        font-size: 1.4rem;
+        height: 55px;
+        padding: 16px;
+        padding-left: 48px;
+      }
+    }
+  }
+}

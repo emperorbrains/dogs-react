@@ -1,0 +1,26 @@
+.breeds {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -2%;
+  margin-right: -2%;
+  .breed {
+    padding: 12px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    width: 21%;
+    text-align: center;
+    margin: 8px 2%;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      background-color: #dedede;
+    }
+    &.active {
+      background-color: rgba(161,135,255,1);
+      background-image: linear-gradient(to right, rgba(161,135,255,1) 0%, rgba(89,86,255,1) 79%, rgba(89,86,255,1) 100%);  
+      color: white;
+    }
+  }
+}

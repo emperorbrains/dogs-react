@@ -1,35 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import BlockUI from 'react-block-ui';
+// import PropTypes from 'prop-types';
 
-import GoogleLoader from '../../../shared/components/GoogleLoader';
-import { noop } from '../../../utils';
+import searchIcon from '../../../assets/icons/search.svg';
+import Breeds from './Breeds/BreedsContainer';
 
-const Home = ({ onSelectedBreedChange, loading }) => (
+const Home = () => (
   <div className="home">
     <div className="page-head">
       <h1>Dogs!</h1>
-      <input className="search" />
+      <div className="search">
+        <img src={searchIcon} alt="" />
+        <input type="text" placeholder="search" />
+      </div>
     </div>
-    {console.log(onSelectedBreedChange)}
-    <BlockUI
-      tag="div"
-      blocking={loading}
-      loader={<GoogleLoader height={50} width={50} />}
-    >
-      Dogs
-    </BlockUI>
+    <Breeds />
   </div>
 );
 
 Home.propTypes = {
-  onSelectedBreedChange: PropTypes.func,
-  loading: PropTypes.bool,
 };
 
 Home.defaultProps = {
-  onSelectedBreedChange: noop,
-  loading: false,
 };
 
 export default Home;
