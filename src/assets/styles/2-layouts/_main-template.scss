@@ -1,0 +1,11 @@
+$header-height: 0px;
+
+.main-template {
+  height: 100%;
+  .app-header {
+  }
+  main {
+    height: calc(100% - #{$header-height});
+    overflow-y: auto;
+  }
+}
