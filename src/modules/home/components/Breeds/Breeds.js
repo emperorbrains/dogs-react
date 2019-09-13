@@ -6,7 +6,7 @@ import { noop } from '../../../../utils';
 import GoogleLoader from '../../../../shared/components/GoogleLoader';
 
 const Breeds = ({
-  loading, breeds, handleBreedClick, selectedBreed,
+  loading, breeds, handleBreedClick, selectedBreed, search,
 }) => (
   <BlockUI
     tag="div"
@@ -16,13 +16,16 @@ const Breeds = ({
     <div className="breeds">
       {
         breeds.map((breed) => (
-          <div
-            className={`breed ${selectedBreed === breed ? 'active' : ''}`}
-            role="presentation"
-            onClick={() => handleBreedClick(breed)}
-          >
-            {breed}
-          </div>
+          (!search || (search && search.length > 0 && breed.toLowerCase().includes(search)))
+          && (
+            <div
+              className={`breed ${selectedBreed === breed ? 'active' : ''}`}
+              role="presentation"
+              onClick={() => handleBreedClick(breed)}
+            >
+              {breed}
+            </div>
+          )
         ))
       }
     </div>
@@ -34,6 +37,8 @@ Breeds.propTypes = {
   breeds: PropTypes.instanceOf(Array),
   handleBreedClick: PropTypes.func,
   selectedBreed: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
+  search: PropTypes.string,
 };
 
 Breeds.defaultProps = {

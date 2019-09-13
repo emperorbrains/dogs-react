@@ -8,8 +8,9 @@ import RequestStates from '../../../../utils/request-states';
 import { noop } from '../../../../utils';
 
 const BreedsContainer = ({
-  getBreeds, getBreedImages, loading, breeds,
+  getBreeds, getBreedImages, loading, breeds, search
 }) => {
+  console.log('breeds : ', search);
   const [selectedBreed, setSelectedBreed] = useState('');
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const BreedsContainer = ({
       breeds={breeds}
       selectedBreed={selectedBreed}
       handleBreedClick={handleBreedClick}
+      search={search}
     />
   );
 };
